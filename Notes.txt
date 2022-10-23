@@ -1,0 +1,7 @@
+Paketler :
+Hangfire 1.7.22
+Hangfire.SqlServer
+Hangfire.Core
+
+
+Öncelikle HangfireApp veritabaný oluþturduk,tablolarý kendi ekler.
