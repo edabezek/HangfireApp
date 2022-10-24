@@ -35,6 +35,12 @@ Open source task schedulers,uses persistent storage and it supports multiple que
 Persistent storage saves the job state, we also have a job retries. This feature helps make sure our jobs finish executing even 
 if they run into a transient exception or if the dedicated application pool crashes. If a job fails, Hangfire will try to run it again as soon as 
 possible.
+
+## Security
+
+Since the dashboard may expose very sensitive data like method names, parameter values, email-ids, it is highly important that we secure/restrict
+this endpoint. Hangfire, out of the box makes the dashboard secure by allowing only local requests. We can change this by implementing  of 
+IDashboardAuthorizationFilter.
 	
 ## Components
 	
@@ -63,6 +69,13 @@ any existing jobs.
 Here the server running in the test application appears.
 If we had more server instances running, we would also see them listed here. Hangfire checks server usage periodically,so if there is a server
 that is not in use anymore, it will be automatically removed from the list.
+
+# Job Types
+
+## Fire And Forget Jobs
+
+	This jobs are executed only once and almost immediately after creation.
+
 
 ## Succeeded Jobs
 
