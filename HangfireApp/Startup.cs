@@ -34,7 +34,8 @@ namespace HangfireApp
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "HangfireApp", Version = "v1" });
             });
             //To be able to use our new service with dependency injection, inside the ConfigureServices() method we register our interface implementation using the AddScoped() method.
-            services.AddScoped<IJobTestService, JobTestService>();  
+            services.AddScoped<IJobTestService, JobTestService>(); 
+            //mail için service yazýlabilir.
             services.AddHangfire(x =>
             {
                 x.UseSqlServerStorage(Configuration.GetConnectionString("DBConnection"));
@@ -63,7 +64,7 @@ namespace HangfireApp
                 endpoints.MapControllers();
             });
             //we can easly monitor our jobs
-            app.UseHangfireDashboard();
+            app.UseHangfireDashboard();//app.UseHangfireDashboard("/mydashboard"); dashboard sayfasý
             //This dashboard is, by default, configured to be accessible only locally, but if you want to access it remotely, you can configure that as well. However, it exposes a lot of sensitive information, so always be careful with that configuration.
         }
     }
